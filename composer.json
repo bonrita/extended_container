@@ -1,5 +1,5 @@
 {
-  "name": "bonrita/extended_container",
+  "name": "drupal/extended_container",
   "description": "Extend the capabilities of the container.",
   "type": "drupal-module",
   "license": "GPL-2.0+",
