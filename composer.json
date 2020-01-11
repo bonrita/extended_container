@@ -12,14 +12,15 @@
       "role": "Maintainer"
     }
   ],
-  "require": {
-    "cweagans/composer-patches": "^1.6.5"
-  },
   "extra": {
     "composer-exit-on-patch-failure": true,
     "patchLevel": {
       "drupal/core": "-p2"
     },
-    "patches-file": "composer.patches.json"
+    "patches": {
+      "drupal/core": {
+        "Support ServiceClosureArgument in OptimizedPhpArrayDumper": "https://github.com/bonrita/drupal_core_patches/blob/master/drupal8/drupal-8-dependency-injection-service-closure-argument.patch"
+      }
+    }
   }
 }
