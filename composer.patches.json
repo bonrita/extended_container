@@ -1,0 +1,7 @@
+{
+  "patches": {
+    "drupal/core": {
+      "Support ServiceClosureArgument in OptimizedPhpArrayDumper": "https://github.com/bonrita/drupal_core_patches/blob/master/drupal8/drupal-8-dependency-injection-service-closure-argument.patch"
+    }
+  }
+}

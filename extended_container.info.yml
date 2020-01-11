@@ -1,0 +1,5 @@
+name: Extended container
+type: module
+description: 'Extend the capabilities of the container.'
+package: Container
+core: 8.x
