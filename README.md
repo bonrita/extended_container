@@ -10,5 +10,6 @@ Tag the service with the tag: 'container.drupal_service_subscriber'
 
 ## Patch core
 For this module to work you need to patch core with the patches below.
+https://github.com/bonrita/drupal_core_patches/blob/master/drupal8/drupal-8-dependency-injection-service-closure-argument.patch
 
 
