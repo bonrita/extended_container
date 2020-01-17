@@ -12,7 +12,7 @@ Tag the service with the tag: 'container.drupal_service_subscriber'
 
 ### Autowiring
 Improved greatly on the autowiring feature e.g
-* Enable autowiring for all services of a module by deefault i.e if enabled for that particular module.
+* Enable autowiring for all services of a module by default i.e if enabled for that particular module.
 * Enable autowiring of interfaces
 
 
