@@ -17,7 +17,7 @@ Improved greatly on the autowiring feature e.g
 
 
 ## Patch core
-For this module to work you need to patch core with the patches below.
-https://github.com/bonrita/drupal_core_patches/blob/master/drupal8/drupal-8-dependency-injection-service-closure-argument.patch
+For this module to work certain core files are patched automatically if you are using composer to download the module. 
+Look into the composer.json file for all of the links to the patches.
 
 
