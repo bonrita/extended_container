@@ -11,7 +11,7 @@ For more information about service subscribers [read](https://symfony.com/doc/3.
 Tag the service with the tag: 'container.drupal_service_subscriber'
 
 ### Autowiring
-Improved greatly on the autowiring feature e.g
+Improved greatly on the autowiring feature. Below is what was improved.
 * Enable autowiring for all services of a module by default i.e if enabled for that particular module.
 * Enable autowiring of interfaces
 
