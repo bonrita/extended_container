@@ -16,12 +16,18 @@ use Symfony\Component\DependencyInjection\ServiceSubscriberInterface;
 use Symfony\Component\DependencyInjection\TypedReference;
 
 /**
- * Class RegisterServiceSubscribersPass
+ * This class adds the service locator functionality.
+ *
+ * This class is 90% a duplicate of
+ *  \Symfony\Component\DependencyInjection\Compiler\RegisterServiceSubscribersPass
  *
  * @package Drupal\extended_container\DependencyInjection\Compiler
  */
 class RegisterServiceSubscribersPass extends AbstractRecursivePass {
 
+  /**
+   * {@inheritdoc}
+   */
   protected function processValue($value, $isRoot = FALSE) {
 
     if (!$value instanceof Definition || $value->isAbstract() || $value->isSynthetic() || !$value->hasTag('container.drupal_service_subscriber')) {
@@ -78,6 +84,8 @@ class RegisterServiceSubscribersPass extends AbstractRecursivePass {
   }
 
   /**
+   * Register a service locator.
+   *
    * @param Reference[] $refMap
    * @param string|null $callerId
    *

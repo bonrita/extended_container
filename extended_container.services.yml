@@ -1,0 +1,7 @@
+services:
+  extended_container.controller_argument_resolver:
+    class: Drupal\extended_container\Controller\ArgumentResolver\ServiceTypeHintResolver
+    arguments: ['@service_container', '@class_resolver', '@cache.default']
+    public: false
+    tags:
+      - { name: controller.argument_value_resolver, priority: 40 }

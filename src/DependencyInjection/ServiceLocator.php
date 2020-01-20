@@ -11,7 +11,10 @@ use Symfony\Component\DependencyInjection\Exception\ServiceNotFoundException;
 use Symfony\Component\DependencyInjection\ServiceSubscriberInterface;
 
 /**
- * Class ServiceLocator
+ * This class adds the service locator functionality.
+ *
+ * This class is 98% a duplicate of
+ * \Symfony\Component\DependencyInjection\ServiceLocator
  *
  * @package Drupal\extended_container\DependencyInjection
  */
