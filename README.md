@@ -14,6 +14,7 @@ Tag the service with the tag: 'container.drupal_service_subscriber'
 Improved greatly on the autowiring feature. Below is what was improved.
 * Enable autowiring for all services of a module by default i.e if enabled for that particular module.
 * Enable autowiring of interfaces
+* Add the ability to autowire dependencies on controller methods.
 
 
 ## Patch core
