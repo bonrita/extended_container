@@ -28,7 +28,7 @@ Suppose you have a controller class: SubscribedServicesController that needs man
   }
 ```
 
-Add the small container that will load the lazy loaded services to the class constructor as below.
+Add the small container that will lazy load the services to the class constructor as below.
 Note: Do not add the argument to your service definition as it will be added for you automatically when the container is building the service.
 ```
 use Psr\Container\ContainerInterface;
