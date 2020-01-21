@@ -211,12 +211,12 @@ Accessing the services in other locations of your application, in the services.y
 services:
   other_module.other_service:
     class: Drupal\other_module\OtherService
-    arguments: ['@Drupal\my_module\MyService']
+    arguments: ['@Drupal\my_module\MyService1']
 ```
 
 Note: 
 
-- how you add the '@' symbol at class name.
+- how you prefix the class name with the '@' symbol.
 - The fully qualified class name becomes the service ID.
 
 
