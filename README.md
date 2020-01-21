@@ -14,6 +14,7 @@ For more information about service subscribers [read](https://symfony.com/doc/3.
   - Tag the service with the tag: **'container.drupal_service_subscriber'** instead of that one that is mentioned in the symfony docs.
   
 ***Example***
+
 Suppose you have a controller class: SubscribedServicesController that needs many dependencies, implement the *Symfony\Component\DependencyInjection\ServiceSubscriberInterface* to add the services you wish to add.
 ```
   /**
