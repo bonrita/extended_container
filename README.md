@@ -230,7 +230,7 @@ Look into the composer.json file for all of the links to the patches.
    Unused binding "Drupal\my_module\SomeCustomInterface" in service "Drupal\my_module\MyModuleServiceProvider".
   ```
   **Solution:** Remove the binding you defined. Symfony only allows to bind interfaces that are used as type hints somewhere in your custom module classes. That error is only thrown if the interface is not type hinted anywhere in your module classes.
-- hhdhdh
+- **QN:**
 
 
 
