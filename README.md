@@ -200,6 +200,26 @@ Note:
 
 How the classes you do not want to automatically add as services are excluded i.e the whole **controller** folder is excluded and also the class in the file **ExcludeService.php** will be excluded from automatically beeing registered as a service.
 
+Accessing the above generated services would be like:
+
+```
+\Drupal::service('Drupal\my_module\MyService');
+```
+
+Accessing the services in other locations of your application, in the services.yml file do 
+```
+services:
+  other_module.other_service:
+    class: Drupal\other_module\OtherService
+    arguments: ['@Drupal\my_module\MyService']
+```
+
+Note: 
+
+- how you add the '@' symbol at class name.
+- The fully qualified class name becomes the service ID.
+
+
 ## Patch core
 For this module to work certain core files are patched automatically if you are using composer to download the module. 
 Look into the composer.json file for all of the links to the patches.
