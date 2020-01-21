@@ -166,7 +166,7 @@ It will also work for all controller methods in the entire application that type
 ### Local service binding
 Read more about it [here](https://symfony.com/blog/new-in-symfony-3-4-local-service-binding)
 
-For an example see the above example. Section:- First solution: "Use local service binding"
+For an example see the above example. Section:- ***First solution:*** "Use local service binding"
 
 ## Patch core
 For this module to work certain core files are patched automatically if you are using composer to download the module. 
