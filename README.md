@@ -84,7 +84,7 @@ To fix that, you need to explicitly wire the interfaces with a particular servic
 
 You have 3 ways to fix the above problem.
 
-Service definition i.e in the MODULE_NAME.services.yml
+In service definition i.e in the MODULE_NAME.services.yml
 
 First solution:
 
