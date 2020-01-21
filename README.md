@@ -65,14 +65,19 @@ services:
 ```
 From this moment on you do not have to define arguments in your service definition as they will be automatically added for you.
 
-The example below should work without explicitly configuring the service arguments.
+The example below should work without explicitly configuring the service arguments i.e if the default (_default) autowiring (as shown above) was enabled .
 
 Service definition:
 ```
   tricks.subscribed_service:
     class: Drupal\tricks\SubscribedServices
 ```
-
+**Or** you may decide to enable or disable autowiring per service i.e
+```
+  tricks.subscribed_services:
+    class: Drupal\tricks\SubscribedServicesController
+    autowire: false
+```
 Class constructor:
 ```
 public function page(ThemeManager $themeManager, EntityTypeManager $entityTypeManager) { }
@@ -86,22 +91,49 @@ You have 3 ways to fix the above problem.
 
 In service definition i.e in the MODULE_NAME.services.yml
 
-First solution:
+***First solution:***
 
-Use service binding [for more info](https://symfony.com/blog/new-in-symfony-3-4-local-service-binding)
+Use local service binding [for more info](https://symfony.com/blog/new-in-symfony-3-4-local-service-binding)
 ```
 services:
   _defaults:
     bind:
       Drupal\Core\Theme\ThemeManagerInterface: '@theme.manager'
+      Drupal\Core\Entity\EntityTypeManagerInterface: '@entity_type.manager'
 ```
-The above will work for all classes that type hint the ***ThemeManagerInterface*** 
+The above will work for all classes (global in this module) that type hint the ***ThemeManagerInterface*** in this module.
 
-Second solution:
+It will also work for all controller methods that type hint the above interfaces within this module.
+
+***Second solution:***
+
+Use binding arguments by name.
+```
+tricks.subscribed_service:
+    class: Drupal\tricks\SubscribedServices
+    arguments:
+      $themeManager: '@theme.manager'
+      $themeManager: '@entity_type.manager'
+```
+The above will only work for the class defined in this service definition. The arguments will not work on the controller methods. The above arguments are only meant for the constructor method of the class in question.
+
+***Third solution:***
+
+Directly bind the interface to a service.
+
+```
+Drupal\Core\Theme\ThemeManagerInterface: '@theme.manager'
+Drupal\Core\Entity\EntityTypeManagerInterface: '@entity_type.manager'
+```
+The above will work for all classes (globally) that type hint the ***ThemeManagerInterface*** in the whole application i.e if they enabled autowiring on them.
+
+It will also work for all controller methods in the entire applicaion that type hint the above interface. Only if autowiring was enabled on those controllers.
 
 
 ### Local service binding
 Read more about it [here](https://symfony.com/blog/new-in-symfony-3-4-local-service-binding)
+
+For an example see the above examples.
 
 ## Patch core
 For this module to work certain core files are patched automatically if you are using composer to download the module. 
