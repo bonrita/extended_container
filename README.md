@@ -168,6 +168,38 @@ Read more about it [here](https://symfony.com/blog/new-in-symfony-3-4-local-serv
 
 For an example see the above example. Section:- ***First solution:*** "Use local service binding"
 
+### Automatic Service Loading
+Added the ability to automatically create services from all classes that are defined in your custom module.
+
+***Example:***
+
+Suppose you do have a module that defines a number of classes that you wish to be services.
+
+Imagine a folder structure as shown below.
+
+ my_module/src
+ - controller
+    - MyContoller1.php
+    - MyController2.php
+ - MyService1.php
+ - MyService2.php
+ - ExcludeService.php
+ 
+ To automatically register all the above classes as services, in your my_module.services.yml add the lines below.
+ ```
+ services:
+  _defaults:
+    autowire: true
+    
+  Drupal\my_module\:
+    resource: 'modules/custom/my_module/src/*'
+    exclude: 'modules/custom/my_module/src/{Controller,ExcludeService.php}'  
+ ```
+
+Note:
+
+How the classes you do not want to automatically add as services are excluded i.e the whole **controller** folder is excluded and also the class in the file **ExcludeService.php** will be excluded from automatically beeing registered as a service.
+
 ## Patch core
 For this module to work certain core files are patched automatically if you are using composer to download the module. 
 Look into the composer.json file for all of the links to the patches.
