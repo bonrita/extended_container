@@ -40,7 +40,11 @@ final class ServiceTypeHintResolver implements ArgumentValueResolverInterface {
    * @param \Drupal\Core\DependencyInjection\ClassResolverInterface $classResolver
    * @param \Drupal\Core\Cache\CacheBackendInterface $cache
    */
-  public function __construct(ContainerInterface $container, ClassResolverInterface $classResolver, CacheBackendInterface $cache) {
+  public function __construct(
+    ContainerInterface $container,
+    ClassResolverInterface $classResolver,
+    CacheBackendInterface $cache
+  ) {
     $this->classResolver = $classResolver;
     $this->container = $container;
     $this->cache = $cache;
@@ -50,7 +54,9 @@ final class ServiceTypeHintResolver implements ArgumentValueResolverInterface {
    * {@inheritdoc}
    */
   public function supports(Request $request, ArgumentMetadata $argument) {
-    if ($this->container->has($argument->getType()) || class_exists($argument->getType())) {
+    $class = $this->getFullyQualifiedClassName($argument);
+    $service_id = empty($class) ? $argument->getType() : $class;
+    if ($this->container->has($service_id) || class_exists($service_id)) {
       return TRUE;
     }
     return FALSE;
@@ -73,13 +79,18 @@ final class ServiceTypeHintResolver implements ArgumentValueResolverInterface {
    */
   private function getService(ArgumentMetadata $argument) {
 
+    $id = '';
     $cid = 'extended_container_controller_arguments_' . $argument->getType();
     $data = $this->cache->get($cid);
 
     if (is_object($data) && !empty($data->data)) {
       $id = $data->data;
-    } else {
-      $service_id = '';
+    }
+    else {
+
+      $class = $this->getFullyQualifiedClassName($argument);
+      $service_id = empty($class) ? $argument->getType() : $class;
+
       $reflection_obj = new \ReflectionObject($this->container);
       $property = $reflection_obj->getProperty('serviceDefinitions');
       $property->setAccessible(TRUE);
@@ -87,17 +98,51 @@ final class ServiceTypeHintResolver implements ArgumentValueResolverInterface {
 
       foreach ($service_definitions as $key => $serviceDefinition) {
         $definition = unserialize($serviceDefinition);
-        if (isset($definition['class']) && $argument->getType() === $definition['class']) {
-          $service_id = $key;
+        if (isset($definition['class']) && $service_id === $definition['class']) {
+          $id = $key;
           break;
         }
       }
 
-      $id = empty($service_id) ? $argument->getType() : $service_id;
       $this->cache->set($cid, $id);
     }
 
-    return $this->classResolver->getInstanceFromDefinition($id);
+    return empty($id) ? NULL : $this->classResolver->getInstanceFromDefinition(
+      $id
+    );
+  }
+
+  /**
+   * Get the fully qualified name of the class.
+   *
+   * @param \Symfony\Component\HttpKernel\ControllerMetadata\ArgumentMetadata $argument
+   *   The argument.
+   *
+   * @return null|string
+   *   The class name.
+   */
+  private function getFullyQualifiedClassName(ArgumentMetadata $argument) {
+    if (strpos($argument->getType(), '\\') === FALSE) {
+      return NULL;
+    }
+    $class = '';
+    $class_parts = explode('\\', $argument->getType());
+
+    $i = 0;
+    foreach ($class_parts as $classPart) {
+      if ($i > 1) {
+        $class .= '\\' . ucfirst($classPart);
+      }
+      elseif ($i === 0) {
+        $class = $classPart;
+      }
+      else {
+        $class .= '\\' . $classPart;
+      }
+      $i++;
+    }
+
+    return $class;
   }
 
 }
