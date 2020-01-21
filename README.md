@@ -224,4 +224,13 @@ Note:
 For this module to work certain core files are patched automatically if you are using composer to download the module. 
 Look into the composer.json file for all of the links to the patches.
 
+## FAQ
+- **QN:** When l add a a global binding l get the error: 
+  ```
+   Unused binding "Drupal\my_module\SomeCustomInterface" in service "Drupal\my_module\MyModuleServiceProvider".
+  ```
+  **Solution:** Remove the binding you defined. Symfony only allows to bind interfaces that are used as type hints somewhere in your custom module classes. That error is only thrown if the interface is not type hinted anywhere in your module classes.
+- hhdhdh
+
+
 
