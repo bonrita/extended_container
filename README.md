@@ -28,6 +28,16 @@ Suppose you have a controller class: SubscribedServicesController that needs man
   }
 ```
 
+Add the small container that will load the lazy loaded services to the class constructor as below.
+Note: Do not add the argument to your service definition as it will be added for you automatically when the container is building the service.
+```
+use Psr\Container\ContainerInterface;
+
+
+public function __construct(ContainerInterface $locator)
+```
+It is required to type hint the constructor locator argument with the Psr **ContainerInterface** interface as shown.
+
 ### Autowiring
 Improved greatly on the autowiring feature. Below is what was improved.
 * Enable autowiring for all services of a module by default i.e if enabled for that particular module. [Automatic Service Loading in services.yaml](https://symfony.com/doc/current/service_container.html#creating-configuring-services-in-the-container)
