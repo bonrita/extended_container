@@ -45,6 +45,10 @@ Now, in the class methods access the defined services as below:
 $this->locator->get('theme.manager')->getActiveTheme()->getName()
 ```
 
+**Note:**
+
+Service locators will only work if your controller is defined as a service.
+
 ### Autowiring
 Improved greatly on the autowiring feature. Below is what was improved.
 * Enable autowiring for all services of a module by default i.e if enabled for that particular module. [Automatic Service Loading in services.yaml](https://symfony.com/doc/current/service_container.html#creating-configuring-services-in-the-container)
@@ -127,8 +131,7 @@ Drupal\Core\Entity\EntityTypeManagerInterface: '@entity_type.manager'
 ```
 The above will work for all classes (globally) that type hint the ***ThemeManagerInterface*** in the whole application i.e if they enabled autowiring on them.
 
-It will also work for all controller methods in the entire applicaion that type hint the above interface. Only if autowiring was enabled on those controllers.
-
+It will also work for all controller methods in the entire application that type hint the above interface with or without enabling autowiring on those controller classes.
 
 ### Local service binding
 Read more about it [here](https://symfony.com/blog/new-in-symfony-3-4-local-service-binding)
