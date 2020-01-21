@@ -8,7 +8,7 @@ Added functionality for service subscribers.
 For more information about service subscribers [read](https://symfony.com/doc/3.4/service_container/service_subscribers_locators.html) 
 
 #### Use
-Tag the service with the tag: 'container.drupal_service_subscriber'
+Tag the service with the tag: **'container.drupal_service_subscriber'** instead of that one that mentioned in the symfony docs.
 
 ### Autowiring
 Improved greatly on the autowiring feature. Below is what was improved.
