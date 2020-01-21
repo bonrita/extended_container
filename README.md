@@ -12,7 +12,7 @@ Tag the service with the tag: 'container.drupal_service_subscriber'
 
 ### Autowiring
 Improved greatly on the autowiring feature. Below is what was improved.
-* Enable autowiring for all services of a module by default i.e if enabled for that particular module. [more info: Automatic Service Loading in services.yaml](https://symfony.com/doc/current/service_container.html#creating-configuring-services-in-the-container)
+* Enable autowiring for all services of a module by default i.e if enabled for that particular module. [Automatic Service Loading in services.yaml](https://symfony.com/doc/current/service_container.html#creating-configuring-services-in-the-container)
 * Enable autowiring of interfaces. [More info](https://symfony.com/doc/3.4/service_container/autowiring.html)
 * Add the ability to autowire dependencies on controller methods.
 
