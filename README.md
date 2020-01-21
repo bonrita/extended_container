@@ -8,7 +8,24 @@ Added functionality for service subscribers.
 For more information about service subscribers [read](https://symfony.com/doc/3.4/service_container/service_subscribers_locators.html) 
 
 - Usage
+  - It lazy loads services.
+
+- How
   - Tag the service with the tag: **'container.drupal_service_subscriber'** instead of that one that is mentioned in the symfony docs.
+  
+#### Example
+Suppose you have a controller class: SubscribedServicesController that needs many dependencies, implement the *Symfony\Component\DependencyInjection\ServiceSubscriberInterface* to add the services you wish to add.
+```
+  /**
+   * {@inheritdoc}
+   */
+  public static function getSubscribedServices() {
+    return [
+      'email.validator' => EmailValidator::class,
+      'theme.manager' => ThemeManager::class
+    ];
+  }
+```
 
 ### Autowiring
 Improved greatly on the autowiring feature. Below is what was improved.
