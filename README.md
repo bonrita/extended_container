@@ -15,7 +15,18 @@ For more information about service subscribers [read](https://symfony.com/doc/3.
   
 ***Example:***
 
-Suppose you have a controller class: SubscribedServicesController that needs many dependencies, implement the *Symfony\Component\DependencyInjection\ServiceSubscriberInterface* to add the services you wish to add.
+Suppose you have a controller class: SubscribedServicesController that needs many dependencies.
+
+Define the controller class as a service and tag it.
+
+```
+  tricks.subscribed_controllers:
+    class: Drupal\tricks\Controller\SubscribedServicesController
+    tags:
+      - { name: container.drupal_service_subscriber }
+```
+
+Implement the *Symfony\Component\DependencyInjection\ServiceSubscriberInterface* to add the services you wish to add.
 ```
   /**
    * {@inheritdoc}
