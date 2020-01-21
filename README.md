@@ -60,6 +60,25 @@ $this->locator->get('theme.manager')->getActiveTheme()->getName()
 
 Service locators will only work if your controller is defined as a service.
 
+### Global module configuration
+Added the ability to globally define default configurations for all the services defined in the module in question.
+
+Below are the configurations that can be globally configured for all services in the module in question.
+
+- public
+- tags
+- autowire
+- autoconfigure
+- bind
+
+***Example:***
+```
+services:
+  _defaults:
+    autowire: true
+    autoconfigure: true
+```
+
 ### Autowiring
 Improved greatly on the autowiring feature. Below is what was improved.
 * Enable autowiring for all services of a module by default i.e if enabled for that particular module. [Automatic Service Loading in services.yaml](https://symfony.com/doc/current/service_container.html#creating-configuring-services-in-the-container)
