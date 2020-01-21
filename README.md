@@ -79,8 +79,11 @@ public function page(ThemeManager $themeManager, EntityTypeManager $entityTypeMa
 ```
 
 Note that the constructor arguments are type coupled. Hence violating the D (dependency inversion) principle.
+
 To fix that, you need to explicitly wire the interfaces with a particular service as shown below.
+
 You have 3 ways to fix the above problem.
+
 Service definition i.e in the MODULE_NAME.services.yml
 
 First solution:
