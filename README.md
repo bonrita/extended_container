@@ -34,9 +34,16 @@ Note: Do not add the argument to your service definition as it will be added for
 use Psr\Container\ContainerInterface;
 
 
-public function __construct(ContainerInterface $locator)
+public function __construct(ContainerInterface $locator) {
+ $this->locator = $locator;
+}
 ```
 It is required to type hint the constructor locator argument with the Psr **ContainerInterface** interface as shown.
+
+Now, in the class methods access the defined services as below:
+```
+$this->locator->get('theme.manager')->getActiveTheme()->getName()
+```
 
 ### Autowiring
 Improved greatly on the autowiring feature. Below is what was improved.
