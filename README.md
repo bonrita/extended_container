@@ -272,6 +272,36 @@ class TagServiceManager implements \IteratorAggregate {
 }
 ```
 
+### Add an iterator type of argument.
+Added the ability to add an iterator argument so that you can pass in a list of services in one single constructor argumentof your service.
+
+***Example:***
+
+In the MODULE_NAME.services.yml
+```
+services:
+
+  module_name.iterator_service:
+    class: Drupal\module_name\IteratorServiceCollection
+    arguments:
+      - !iterator ['@theme.manager', '@entity_type.manager']
+```
+ The class.
+ 
+ ```
+namespace Drupal\module_name;
+
+class IteratorServiceCollection {
+  // All the above mentioned services will be added to this property as a numeric indexed array.
+  private $services;
+
+  public function __construct(array $services) {
+    $this->services = $services;
+  }
+
+}
+ ```
+
 
 ## Patch core
 For this module to work certain core files are patched automatically if you are using composer to download the module. 
