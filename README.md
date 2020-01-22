@@ -272,7 +272,7 @@ class TagServiceManager implements \IteratorAggregate {
 }
 ```
 
-### Add an iterator type of argument.
+### Iterator type of argument.
 Added the ability to add an iterator argument so that you can pass in a list of services in one single constructor argumentof your service.
 
 ***Example:***
