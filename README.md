@@ -220,7 +220,7 @@ Note:
 - The fully qualified class name becomes the service ID.
 
 ### Simpler injection of tagged services
-(Read more)[https://symfony.com/blog/new-in-symfony-3-4-simpler-injection-of-tagged-services] about it.
+[Read more](https://symfony.com/blog/new-in-symfony-3-4-simpler-injection-of-tagged-services) about it.
 
 Added the ability to automatically collect all tagged services and provide them to a manager without creating a compiler pass.
 
