@@ -219,6 +219,32 @@ Note:
 - how you prefix the class name with the '@' symbol.
 - The fully qualified class name becomes the service ID.
 
+### Simpler injection of tagged services
+(Read more)[https://symfony.com/blog/new-in-symfony-3-4-simpler-injection-of-tagged-services] about it.
+
+Added the ability to automatically collect all tagged services and provide them to a manager without creating a compiler pass.
+
+***Example:***
+
+In the MODULE_NAME.services.yml
+```
+services:
+  module_name.tagged_1:
+    class: Drupal\module_name\TaggedService1
+    tags:
+      - { name: module_name.tagged_service }
+      
+  module_name.tagged_2:
+    class: Drupal\module_name\TaggedService2
+    tags:
+      - { name: module_name.tagged_service }
+   
+  module_name.manager:
+    class: Drupal\module_name\TagServiceManager
+    arguments:
+      - !tagged module_name.tagged_service
+```
+
 
 ## Patch core
 For this module to work certain core files are patched automatically if you are using composer to download the module. 
