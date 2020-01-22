@@ -220,11 +220,16 @@ Note:
 - The fully qualified class name becomes the service ID.
 
 ### Simpler injection of tagged services
+Added the ability to automatically collect all tagged services and provide them to a manager without creating a compiler pass. 
 [Read more](https://symfony.com/blog/new-in-symfony-3-4-simpler-injection-of-tagged-services) about it.
 
-Added the ability to automatically collect all tagged services and provide them to a manager without creating a compiler pass.
 
 ***Example:***
+
+Suppose you do have 2 services that are tagged as 'module_name.tagged_service' and you do want to be collected in one single place e.g in the manager 'module_name.manager'.
+
+Simply add a manager service and use a type of argument called ***tagged*** pass in the the tag 'module_name.tagged_servic' whose classes or services you do want collected into the manager.
+See example below.
 
 In the MODULE_NAME.services.yml
 ```
@@ -243,6 +248,28 @@ services:
     class: Drupal\module_name\TagServiceManager
     arguments:
       - !tagged module_name.tagged_service
+```
+
+The manager class whose contructor argument will be automatically filled with  a collection of all services that are tagged with the 'module_name.tagged_service' tag
+
+```
+namespace Drupal\module_name;
+
+class TagServiceManager implements \IteratorAggregate {
+  protected $handlers;
+  public function __construct(iterable $handlers)
+  {
+    $this->handlers = $handlers;
+  }
+
+  /**
+   * @inheritDoc
+   */
+  public function getIterator() {
+    return new \ArrayIterator($this->handlers);
+  }
+
+}
 ```
 
 
