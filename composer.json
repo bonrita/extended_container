@@ -12,6 +12,9 @@
       "role": "Maintainer"
     }
   ],
+  "require": {
+    "symfony/config": "^3.4"
+  },
   "extra": {
     "composer-exit-on-patch-failure": true,
     "patchLevel": {
@@ -19,7 +22,9 @@
     },
     "patches": {
       "drupal/core": {
-        "Combine issues 2961380, 3108020, 3108039": "https://www.drupal.org/files/issues/2020-01-24/combined-patches-for-issues-2961380-3108020-3108039.patch"
+        "Combine issues 2961380, 3108020, 3108039": "https://www.drupal.org/files/issues/2020-01-24/combined-patches-for-issues-2961380-3108020-3108039.patch",
+        "Support custom tags": "https://www.drupal.org/files/issues/2020-01-24/3108309-4-complete.patch",
+        "Update the Yaml file Loader functionality": "https://www.drupal.org/files/issues/2020-01-28/3108565-4-complete.patch"
       }
     }
   }
