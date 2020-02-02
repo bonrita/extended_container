@@ -1,0 +1,6 @@
+name: Extended container autoconfigure example
+type: module
+description: 'Provides an example of about autoconfigure.'
+core: 8.x
+dependencies:
+  - extended_container

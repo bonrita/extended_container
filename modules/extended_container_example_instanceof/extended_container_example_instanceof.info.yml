@@ -1,0 +1,6 @@
+name: Extended container instance of example
+type: module
+description: 'Provides an example about instance of keywords in the service definition.'
+core: 8.x
+dependencies:
+  - extended_container

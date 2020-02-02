@@ -1,0 +1,8 @@
+extended_container_example_cram.resolved_method_arguments:
+  path: 'example/resolved-method-arguments/{step}'
+  defaults:
+    _controller: 'extended_container_example_cram.resolved_method_arguments:page'
+    _title: 'Controller method resolved arguments'
+    step: null
+  requirements:
+    _access: 'TRUE'

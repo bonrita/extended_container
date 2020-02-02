@@ -1,0 +1,7 @@
+extended_container_example_autowire.global_autowired_page:
+  path: '/example/global-autowire'
+  defaults:
+    _controller: 'extended_container_example_autowire.global_autowire_controller:page'
+    _title: 'Global autrowiring'
+  requirements:
+    _access: 'TRUE'

@@ -1,0 +1,7 @@
+extended_container_example_autoconfigure.autoconfigure:
+  path: '/example/autoconfigure'
+  defaults:
+    _controller: 'extended_container_example_autoconfigure.controller:page'
+    _title: 'Autoconfiguring'
+  requirements:
+    _access: 'TRUE'

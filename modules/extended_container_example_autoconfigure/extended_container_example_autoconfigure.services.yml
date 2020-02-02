@@ -1,0 +1,12 @@
+services:
+  _defaults:
+    autowire: true
+    autoconfigure: true
+
+  extended_container_example_autoconfigure.controller:
+    class: Drupal\extended_container_example_autoconfigure\Controller\CarCollectionController
+
+  Drupal\extended_container_example_autoconfigure\CarCollection: ~
+
+  Drupal\extended_container_example_autoconfigure\Car\Audi: ~
+  Drupal\extended_container_example_autoconfigure\Car\Bmw: ~

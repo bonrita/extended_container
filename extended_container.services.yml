@@ -5,3 +5,13 @@ services:
     public: false
     tags:
       - { name: controller.argument_value_resolver, priority: 40 }
+
+  # Assign core interfaces to there service IDs.
+  Drupal\Core\Theme\ThemeManagerInterface: '@theme.manager'
+  Drupal\Core\Entity\EntityTypeManagerInterface: '@entity_type.manager'
+  Drupal\Core\Entity\EntityTypeRepositoryInterface: '@entity.repository'
+  Drupal\Core\Entity\EntityTypeBundleInfoInterface: '@entity_type.bundle.info'
+  Drupal\Core\Routing\ResettableStackedRouteMatchInterface: '@current_route_match'
+  Drupal\Core\Language\LanguageManagerInterface: '@language_manager'
+  Drupal\Core\StringTranslation\TranslationInterface: '@string_translation'
+  Drupal\Core\Session\AccountProxyInterface: '@current_user'
