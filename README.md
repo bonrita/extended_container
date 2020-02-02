@@ -192,8 +192,8 @@ Imagine a folder structure as shown below.
     autowire: true
     
   Drupal\my_module\:
-    resource: 'modules/custom/my_module/src/*'
-    exclude: 'modules/custom/my_module/src/{Controller,ExcludeService.php}'  
+    resource: 'src/*'
+    exclude: 'src/{Controller,ExcludeService.php}'  
  ```
 
 Note:
