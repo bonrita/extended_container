@@ -79,6 +79,7 @@ final class ServiceTypeHintResolver implements ArgumentValueResolverInterface {
    */
   private function getService(ArgumentMetadata $argument) {
 
+    $service = NULL;
     $id = '';
     $cid = 'extended_container_controller_arguments_' . $argument->getType();
     $data = $this->cache->get($cid);
@@ -107,9 +108,14 @@ final class ServiceTypeHintResolver implements ArgumentValueResolverInterface {
       $this->cache->set($cid, $id);
     }
 
-    return empty($id) ? NULL : $this->classResolver->getInstanceFromDefinition(
-      $id
-    );
+    if (!empty($id)) {
+      $service = $this->classResolver->getInstanceFromDefinition($id);
+    }
+    elseif (empty($id) && $this->container->has($class)) {
+      $service = $this->container->get($class);
+    }
+
+    return $service;
   }
 
   /**
