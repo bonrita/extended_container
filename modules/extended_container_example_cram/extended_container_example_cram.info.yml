@@ -1,0 +1,6 @@
+name: Extended container controller resolver arguments
+type: module
+description: 'Provides an example about controller methods type hinting dependencies.'
+core: 8.x
+dependencies:
+  - extended_container

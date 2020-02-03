@@ -4,3 +4,5 @@ services:
 
   extended_container_example_autowire.global_autowire_controller:
     class: Drupal\extended_container_example_autowire\Controller\GlobalAutowiredController
+
+  Drupal\Core\Language\LanguageManagerInterface: '@language_manager'
