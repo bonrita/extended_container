@@ -1,0 +1,8 @@
+services:
+  _defaults:
+    autowire: true
+
+  extended_container_autowire.global_autowire_controller:
+    class: Drupal\extended_container_autowire\Controller\GlobalAutowiredController
+
+  Drupal\Core\Language\LanguageManagerInterface: '@language_manager'

@@ -1,0 +1,8 @@
+services:
+  _defaults:
+    autowire: true
+    autoconfigure: true
+
+  Drupal\extended_container_resource\:
+    resource: 'src/*'
+    exclude: 'src/{Controller,ExtendedContainerResourceServiceProvider.php}'

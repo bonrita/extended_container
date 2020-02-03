@@ -1,7 +1,0 @@
-extended_container_example_instanceof.autoconfigure:
-  path: '/example/instance-of'
-  defaults:
-    _controller: '\Drupal\extended_container_example_instanceof\Controller\CarCollectionController::page'
-    _title: 'Instance of example'
-  requirements:
-    _access: 'TRUE'

@@ -1,0 +1,6 @@
+name: Extended container resource example
+type: module
+description: 'Provides an example about resource and exclude keywords in the service definition.'
+core: 8.x
+dependencies:
+  - extended_container

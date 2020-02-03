@@ -1,0 +1,11 @@
+services:
+  _instanceof:
+    Drupal\extended_container_instanceof\CarInterface:
+      autowire: true
+      tags:
+        - { name: 'car.model' }
+
+  Drupal\extended_container_instanceof\Car\Audi: ~
+  Drupal\extended_container_instanceof\CarInterface: '@Drupal\extended_container_instanceof\Car\Audi'
+
+  Drupal\extended_container_instanceof\CarCollection: ~

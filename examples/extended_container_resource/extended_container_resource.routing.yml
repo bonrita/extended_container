@@ -1,0 +1,7 @@
+extended_container_resource.autoconfigure:
+  path: '/example/resource-exclude'
+  defaults:
+    _controller: '\Drupal\extended_container_resource\Controller\MobileCollectionController::page'
+    _title: 'Resource exclude example'
+  requirements:
+    _access: 'TRUE'

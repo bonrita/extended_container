@@ -1,0 +1,6 @@
+services:
+
+  extended_container_cram.resolved_method_arguments:
+    class: Drupal\extended_container_cram\Controller\MethodResolvedArgumentsController
+
+  Drupal\language\ConfigurableLanguageManagerInterface: '@language_manager'

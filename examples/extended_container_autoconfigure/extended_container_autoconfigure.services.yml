@@ -1,0 +1,12 @@
+services:
+  _defaults:
+    autowire: true
+    autoconfigure: true
+
+  extended_container_autoconfigure.controller:
+    class: Drupal\extended_container_autoconfigure\Controller\TelevisionCollectionController
+
+  Drupal\extended_container_autoconfigure\TelevisionCollection: ~
+
+  Drupal\extended_container_autoconfigure\Television\Sony: ~
+  Drupal\extended_container_autoconfigure\Television\Philips: ~
