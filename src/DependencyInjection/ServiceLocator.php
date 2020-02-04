@@ -98,7 +98,7 @@ class ServiceLocator implements PsrContainerInterface
 
         if (!$this->container) {
             $class = null;
-        } elseif ($this->container->has($id) || isset($this->container->getRemovedIds()[$id])) {
+        } elseif ($this->container->has($id) || (\method_exists($this->container, 'getRemovedIds') && isset($this->container->getRemovedIds()[$id]))) {
             $msg[] = 'even though it exists in the app\'s container,';
         } else {
             try {
