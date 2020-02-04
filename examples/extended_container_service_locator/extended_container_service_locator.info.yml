@@ -1,0 +1,6 @@
+name: Extended container service locator example
+type: module
+description: 'Provides an example about service locators (lazy loading).'
+core: 8.x
+dependencies:
+  - extended_container

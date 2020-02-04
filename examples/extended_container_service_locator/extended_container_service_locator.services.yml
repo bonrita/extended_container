@@ -1,0 +1,6 @@
+services:
+  extended_container_service_locator.subscribed_controllers:
+    class: Drupal\extended_container_service_locator\Controller\SubscribedServicesController
+    autowire: true
+    tags:
+      - { name: container.drupal_service_subscriber }

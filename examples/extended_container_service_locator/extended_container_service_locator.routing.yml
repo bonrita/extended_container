@@ -1,0 +1,7 @@
+extended_container_service_locator.subscribe_page:
+  path: '/example/subscribed-page'
+  defaults:
+    _controller: 'extended_container_service_locator.subscribed_controllers:page'
+    _title: 'Service locator'
+  requirements:
+    _access: 'TRUE'
