@@ -20,8 +20,9 @@ Suppose you have a controller class: SubscribedServicesController that needs man
 Define the controller class as a service and tag it.
 
 ```
-  tricks.subscribed_controllers:
-    class: Drupal\tricks\Controller\SubscribedServicesController
+  extended_container_service_locator.subscribed_controllers:
+    class: Drupal\extended_container_service_locator\Controller\SubscribedServicesController
+    autowire: true
     tags:
       - { name: container.drupal_service_subscriber }
 ```
@@ -103,13 +104,13 @@ The example below should work without explicitly configuring the service argumen
 
 Service definition:
 ```
-  tricks.subscribed_service:
-    class: Drupal\tricks\SubscribedServices
+  extended_container_service_locator.subscribed_service:
+    class: Drupal\extended_container_service_locator\SubscribedServices
 ```
 **Or** you may decide to enable or disable autowiring per service i.e
 ```
-  tricks.subscribed_services:
-    class: Drupal\tricks\SubscribedServicesController
+  extended_container_service_locator.subscribed_services:
+    class: Drupal\extended_container_service_locator\SubscribedServicesController
     autowire: false
 ```
 Class constructor:
@@ -143,8 +144,8 @@ It will also work for all controller methods that type hint the above interfaces
 
 Use binding arguments by name.
 ```
-tricks.subscribed_service:
-    class: Drupal\tricks\SubscribedServices
+extended_container_service_locator.subscribed_service:
+    class: Drupal\extended_container_service_locator\SubscribedServices
     arguments:
       $themeManager: '@theme.manager'
       $themeManager: '@entity_type.manager'
