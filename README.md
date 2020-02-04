@@ -40,6 +40,11 @@ Implement the *Symfony\Component\DependencyInjection\ServiceSubscriberInterface*
   }
 ```
 
+**Note:**
+[Optional Services](https://symfony.com/doc/current/service_container/service_subscribers_locators.html#optional-services) are not supported.
+
+
+
 Add the small container that will lazy load the services to the class constructor as below.
 Note: Do not add the argument to your service definition as it will be added for you automatically when the container is building the service.
 ```
