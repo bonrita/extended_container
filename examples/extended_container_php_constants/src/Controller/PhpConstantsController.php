@@ -40,7 +40,7 @@ class PhpConstantsController extends ControllerBase {
         'Number of continents: ' . $this->phpConstService->getContinentCount(),
         'OS family: ' . $this->phpConstService->getPhpOs()
       ],
-      '#title' => $this->t('Iterator services.'),
+      '#title' => $this->t('PHP constants services.'),
     ];
 
     return $build;
