@@ -1,0 +1,1 @@
+# Example: Passing PHP constants to a service definition.

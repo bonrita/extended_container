@@ -1,0 +1,4 @@
+services:
+  extended_container_php_constants.constants:
+    class: Drupal\extended_container_php_constants\PhpConstService
+    arguments: [!php/const Drupal\extended_container_php_constants\PhpConstants::NAME_OF_THE_GAME, !php/const Drupal\extended_container_php_constants\PhpConstants::NUMBER_OF_CONTINENTS, !php/const PHP_OS_FAMILY]

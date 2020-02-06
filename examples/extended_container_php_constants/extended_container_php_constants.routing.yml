@@ -1,0 +1,7 @@
+extended_container_php_constants.constant_page:
+  path: '/example/constant-page'
+  defaults:
+    _controller: 'Drupal\extended_container_php_constants\Controller\PhpConstantsController::page'
+    _title: 'PHP constants'
+  requirements:
+    _access: 'TRUE'

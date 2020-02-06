@@ -1,0 +1,6 @@
+name: Extended container PHP constants example
+type: module
+description: 'Provides an example showing how to use PHP constants in a service definition.'
+core: 8.x
+dependencies:
+  - extended_container
