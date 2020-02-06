@@ -1,0 +1,5 @@
+services:
+  extended_container_iterator.iterator_service:
+    class: Drupal\extended_container_iterator\IteratorServiceCollection
+    arguments:
+      - !iterator ['@theme.manager', '@entity_type.manager']

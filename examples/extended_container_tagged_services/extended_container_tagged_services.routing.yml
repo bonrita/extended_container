@@ -1,0 +1,7 @@
+extended_container_tagged_services.subscribe_page:
+  path: '/example/tagged-services-page'
+  defaults:
+    _controller: 'Drupal\extended_container_tagged_services\Controller\TaggedServiceController::page'
+    _title: 'Simpler injection of tagged services'
+  requirements:
+    _access: 'TRUE'

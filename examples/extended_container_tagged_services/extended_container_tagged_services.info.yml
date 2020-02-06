@@ -1,0 +1,6 @@
+name: Extended container tagged services example
+type: module
+description: 'Provides an example showing a simpler injection of tagged services.'
+core: 8.x
+dependencies:
+  - extended_container

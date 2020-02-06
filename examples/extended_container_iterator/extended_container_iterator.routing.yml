@@ -1,0 +1,7 @@
+extended_container_iterator.autoconfigure:
+  path: '/example/iterator'
+  defaults:
+    _controller: '\Drupal\extended_container_iterator\Controller\IteratorController::page'
+    _title: 'Iterator example'
+  requirements:
+    _access: 'TRUE'

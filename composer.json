@@ -24,7 +24,7 @@
       "drupal/core": {
         "Combine issues 2961380, 3108020, 3108039": "https://www.drupal.org/files/issues/2020-01-24/combined-patches-for-issues-2961380-3108020-3108039.patch",
         "Support custom tags": "https://www.drupal.org/files/issues/2020-01-24/3108309-4-complete.patch",
-        "Update the Yaml file Loader functionality": "https://www.drupal.org/files/issues/2020-01-28/3108565-6-complete.patch"
+        "Update the Yaml file Loader functionality": "https://www.drupal.org/files/issues/2020-02-06/3108565-16-complete-without-patched-composer.patch"
       }
     }
   }

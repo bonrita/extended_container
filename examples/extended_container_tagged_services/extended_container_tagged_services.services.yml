@@ -1,0 +1,15 @@
+services:
+  extended_container_tagged_services.tagged.one:
+    class: Drupal\extended_container_tagged_services\TaggedServiceOne
+    tags:
+      - { name: ects.tagged_service }
+
+  extended_container_tagged_services.tagged.two:
+    class: Drupal\extended_container_tagged_services\TaggedServiceTwo
+    tags:
+      - { name: ects.tagged_service }
+
+  extended_container_tagged_services.collection:
+    class: Drupal\extended_container_tagged_services\TagServiceCollection
+    arguments:
+      - !tagged ects.tagged_service
