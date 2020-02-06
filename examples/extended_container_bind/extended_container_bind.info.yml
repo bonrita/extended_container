@@ -1,0 +1,6 @@
+name: Extended container bind example
+type: module
+description: 'Provides an example about the bind option in the service definition.'
+core: 8.x
+dependencies:
+  - extended_container

@@ -1,0 +1,10 @@
+services:
+  _defaults:
+    autowire: true
+    bind:
+      Drupal\extended_container_bind\BoxInterface: '@Drupal\extended_container_bind\Box1'
+      
+  Drupal\extended_container_bind\Box1: ~ 
+    
+  extended_container_bind.bind:
+    class: Drupal\extended_container_bind\Controller\BindController

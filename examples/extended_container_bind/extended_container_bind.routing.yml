@@ -1,0 +1,7 @@
+extended_container_bind.bind:
+  path: '/example/bind'
+  defaults:
+    _controller: 'extended_container_bind.bind:page'
+    _title: 'Bind example'
+  requirements:
+    _access: 'TRUE'
