@@ -1,8 +1,6 @@
 <?php
 
-
 namespace Drupal\extended_container_instanceof\Controller;
-
 
 use Drupal\Core\Controller\ControllerBase;
 use Drupal\extended_container_instanceof\CarCollection;
@@ -16,6 +14,8 @@ use Symfony\Component\DependencyInjection\ContainerInterface;
 class CarCollectionController extends ControllerBase {
 
   /**
+   * The list of a car collection.
+   *
    * @var \Drupal\extended_container_instanceof\CarCollection
    */
   private $carCollection;
@@ -31,7 +31,7 @@ class CarCollectionController extends ControllerBase {
   }
 
   /**
-   * @inheritDoc
+   * {@inheritdoc}
    */
   public static function create(ContainerInterface $container) {
     return new static(

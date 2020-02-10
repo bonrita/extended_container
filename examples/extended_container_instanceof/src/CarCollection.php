@@ -1,6 +1,5 @@
 <?php
 
-
 namespace Drupal\extended_container_instanceof;
 
 /**
@@ -17,7 +16,6 @@ class CarCollection {
    */
   private $carModels = [];
 
-
   /**
    * Add a car model.
    *
@@ -32,6 +30,7 @@ class CarCollection {
    * Get car models.
    *
    * @return array
+   *   List of car models.
    */
   public function getCarModels(): array {
     return $this->carModels;

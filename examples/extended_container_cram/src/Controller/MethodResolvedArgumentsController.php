@@ -1,8 +1,6 @@
 <?php
 
-
 namespace Drupal\extended_container_cram\Controller;
-
 
 use Drupal\Core\Controller\ControllerBase;
 use Drupal\Core\Theme\ThemeManagerInterface;
@@ -18,11 +16,15 @@ class MethodResolvedArgumentsController extends ControllerBase {
   /**
    * The page.
    *
-   * @param $step
+   * @param string $step
+   *   The step.
    * @param \Drupal\Core\Theme\ThemeManagerInterface $themeManager
+   *   The theme manager.
    * @param \Drupal\language\ConfigurableLanguageManagerInterface $languageManager
+   *   The language manager.
    *
    * @return array
+   *   The render list.
    */
   public function page(
     $step,
@@ -31,9 +33,9 @@ class MethodResolvedArgumentsController extends ControllerBase {
   ) {
     $build['content'] = [
       '#markup' => 'Current theme name: ' . $themeManager->getActiveTheme()
-          ->getName(
-          ) . ', current language site: ' . $languageManager->getCurrentLanguage(
-        )->getName() . ', Step: ' . $step,
+        ->getName(
+      ) . ', current language site: ' . $languageManager->getCurrentLanguage(
+      )->getName() . ', Step: ' . $step,
     ];
 
     return $build;

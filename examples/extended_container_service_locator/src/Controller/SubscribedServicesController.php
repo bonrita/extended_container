@@ -1,8 +1,6 @@
 <?php
 
-
 namespace Drupal\extended_container_service_locator\Controller;
-
 
 use Drupal\Component\Utility\EmailValidator;
 use Drupal\Core\Controller\ControllerBase;
@@ -19,6 +17,8 @@ use Symfony\Component\DependencyInjection\ServiceSubscriberInterface;
 class SubscribedServicesController extends ControllerBase implements ServiceSubscriberInterface {
 
   /**
+   * The locator.
+   *
    * @var \Psr\Container\ContainerInterface
    */
   private $locator;
@@ -27,6 +27,7 @@ class SubscribedServicesController extends ControllerBase implements ServiceSubs
    * SubscribedServicesController constructor.
    *
    * @param \Psr\Container\ContainerInterface $locator
+   *   The locator.
    */
   public function __construct(ContainerInterface $locator) {
     $this->locator = $locator;
@@ -41,8 +42,8 @@ class SubscribedServicesController extends ControllerBase implements ServiceSubs
   public function page() {
     $build['content'] = [
       '#markup' => 'Current theme name: ' . $this->locator->get('theme.manager')
-          ->getActiveTheme()
-          ->getName(),
+        ->getActiveTheme()
+        ->getName(),
     ];
 
     return $build;

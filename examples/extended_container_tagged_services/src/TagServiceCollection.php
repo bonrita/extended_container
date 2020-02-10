@@ -10,6 +10,8 @@ namespace Drupal\extended_container_tagged_services;
 class TagServiceCollection implements \IteratorAggregate {
 
   /**
+   * The collection.
+   *
    * @var iterable
    */
   protected $handlers;
@@ -18,13 +20,14 @@ class TagServiceCollection implements \IteratorAggregate {
    * TagServiceCollection constructor.
    *
    * @param iterable $handlers
+   *   The collection.
    */
   public function __construct(iterable $handlers) {
     $this->handlers = $handlers;
   }
 
   /**
-   * @inheritDoc
+   * {@inheritdoc}
    */
   public function getIterator() {
     return new \ArrayIterator($this->handlers);

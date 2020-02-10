@@ -1,8 +1,6 @@
 <?php
 
-
 namespace Drupal\extended_container_autoconfigure;
-
 
 use Symfony\Component\DependencyInjection\Compiler\CompilerPassInterface;
 use Symfony\Component\DependencyInjection\ContainerBuilder;
@@ -16,7 +14,7 @@ use Symfony\Component\DependencyInjection\Reference;
 class TelevisionPass implements CompilerPassInterface {
 
   /**
-   * @inheritDoc
+   * {@inheritdoc}
    */
   public function process(ContainerBuilder $container) {
 
@@ -30,7 +28,7 @@ class TelevisionPass implements CompilerPassInterface {
     $taggedServices = $container->findTaggedServiceIds('television.model');
 
     foreach ($taggedServices as $id => $tags) {
-      $definition->addMethodCall('addTelevisionModel', array(new Reference($id)));
+      $definition->addMethodCall('addTelevisionModel', [new Reference($id)]);
     }
 
   }

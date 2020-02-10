@@ -1,6 +1,5 @@
 <?php
 
-
 namespace Drupal\Tests\extended_container\Unit;
 
 use Drupal\Core\DependencyInjection\ContainerBuilder;
@@ -10,7 +9,7 @@ use Symfony\Component\DependencyInjection\Compiler\ResolveServiceSubscribersPass
 use Symfony\Component\DependencyInjection\Definition;
 
 /**
- * Class RegisterServiceSubscribersPassTest
+ * Class RegisterServiceSubscribersPassTest.
  *
  * @package Drupal\Tests\extended_container\Unit
  * @coversDefaultClass \Drupal\extended_container\DependencyInjection\Compiler\RegisterServiceSubscribersPass
@@ -33,6 +32,8 @@ class RegisterServiceSubscribersPassTest extends UnitTestCase {
   }
 
 }
-
+/**
+ * Custom definition class.
+ */
 class CustomDefinition extends Definition {
 }

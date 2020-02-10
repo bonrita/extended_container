@@ -1,21 +1,21 @@
 <?php
 
-
 namespace Drupal\extended_container_autowire\Controller;
-
 
 use Drupal\Core\Controller\ControllerBase;
 use Drupal\Core\Language\LanguageManagerInterface;
 use Drupal\Core\Theme\ThemeManagerInterface;
 
 /**
- * Class GlobalAutowiredController.
+ * The Global autowired controller class.
  *
  * @package Drupal\extended_container_autowire\Controller
  */
 class GlobalAutowiredController extends ControllerBase {
 
   /**
+   * The theme manager.
+   *
    * @var \Drupal\Core\Theme\ThemeManagerInterface
    */
   private $themeManager;
@@ -40,13 +40,14 @@ class GlobalAutowiredController extends ControllerBase {
    * The page.
    *
    * @return array
+   *   The render array.
    */
   public function page() {
     $build['content'] = [
       '#markup' => 'Current theme name: ' . $this->themeManager->getActiveTheme(
-        )->getName(
-        ) . ', current language site: ' . $this->languageManager->getCurrentLanguage(
-        )->getName(),
+      )->getName(
+      ) . ', current language site: ' . $this->languageManager->getCurrentLanguage(
+      )->getName(),
     ];
 
     return $build;

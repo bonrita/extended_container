@@ -1,6 +1,5 @@
 <?php
 
-
 namespace Drupal\extended_container_tagged_services\Controller;
 
 use Drupal\Core\Controller\ControllerBase;
@@ -15,6 +14,8 @@ use Symfony\Component\DependencyInjection\ContainerInterface;
 class TaggedServiceController extends ControllerBase {
 
   /**
+   * The collection.
+   *
    * @var \Drupal\extended_container_tagged_services\TagServiceCollection
    */
   private $tagServiceCollection;
@@ -23,6 +24,7 @@ class TaggedServiceController extends ControllerBase {
    * TaggedServiceController constructor.
    *
    * @param \Drupal\extended_container_tagged_services\TagServiceCollection $tagServiceCollection
+   *   The collection.
    */
   public function __construct(TagServiceCollection $tagServiceCollection) {
     $this->tagServiceCollection = $tagServiceCollection;

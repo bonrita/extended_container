@@ -1,6 +1,5 @@
 <?php
 
-
 namespace Drupal\extended_container_resource;
 
 /**
@@ -17,7 +16,6 @@ class MobileCollection {
    */
   private $mobileModels = [];
 
-
   /**
    * Add a mobile model.
    *
@@ -32,6 +30,7 @@ class MobileCollection {
    * Get mobile models.
    *
    * @return array
+   *   The mobile collection.
    */
   public function getMobileModels(): array {
     return $this->mobileModels;

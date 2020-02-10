@@ -1,8 +1,6 @@
 <?php
 
-
 namespace Drupal\extended_container_instanceof;
-
 
 use Drupal\Core\DependencyInjection\ContainerBuilder;
 use Drupal\Core\DependencyInjection\ServiceProviderBase;

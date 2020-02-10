@@ -1,8 +1,6 @@
 <?php
 
-
 namespace Drupal\extended_container_autoconfigure\Controller;
-
 
 use Drupal\Core\Controller\ControllerBase;
 use Drupal\extended_container_autoconfigure\TelevisionCollection;
@@ -15,6 +13,8 @@ use Drupal\extended_container_autoconfigure\TelevisionCollection;
 class TelevisionCollectionController extends ControllerBase {
 
   /**
+   * The tv collection.
+   *
    * @var \Drupal\extended_container_autoconfigure\TelevisionCollection
    */
   private $televisionCollection;

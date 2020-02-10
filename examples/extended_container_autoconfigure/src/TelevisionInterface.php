@@ -1,6 +1,5 @@
 <?php
 
-
 namespace Drupal\extended_container_autoconfigure;
 
 /**

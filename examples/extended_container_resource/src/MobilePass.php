@@ -1,22 +1,20 @@
 <?php
 
-
 namespace Drupal\extended_container_resource;
-
 
 use Symfony\Component\DependencyInjection\Compiler\CompilerPassInterface;
 use Symfony\Component\DependencyInjection\ContainerBuilder;
 use Symfony\Component\DependencyInjection\Reference;
 
 /**
- * Class MobilePass.
+ * Mobile pass.
  *
  * @package Drupal\extended_container_resource
  */
 class MobilePass implements CompilerPassInterface {
 
   /**
-   * @inheritDoc
+   * {@inheritdoc}
    */
   public function process(ContainerBuilder $container) {
 
@@ -26,11 +24,11 @@ class MobilePass implements CompilerPassInterface {
 
     $definition = $container->findDefinition(MobileCollection::class);
 
-    // find all service IDs with the 'mobile.model' tag.
+    // Find all service IDs with the 'mobile.model' tag.
     $taggedServices = $container->findTaggedServiceIds('mobile.model');
 
     foreach ($taggedServices as $id => $tags) {
-      $definition->addMethodCall('addMobileModel', array(new Reference($id)));
+      $definition->addMethodCall('addMobileModel', [new Reference($id)]);
     }
 
   }

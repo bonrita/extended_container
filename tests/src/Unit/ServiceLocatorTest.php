@@ -1,6 +1,5 @@
 <?php
 
-
 namespace Drupal\Tests\extended_container\Unit;
 
 use Drupal\extended_container\DependencyInjection\ServiceLocator;
@@ -9,7 +8,7 @@ use Symfony\Component\DependencyInjection\Container;
 use Symfony\Component\DependencyInjection\ServiceSubscriberInterface;
 
 /**
- * Class ServiceLocatorTest
+ * Class ServiceLocatorTest.
  *
  * @package Drupal\Tests\extended_container\Unit
  *
@@ -26,7 +25,7 @@ class ServiceLocatorTest extends UnitTestCase {
     $container->set('foo', new \stdClass());
     $subscriber = new SomeServiceSubscriber();
 
-    $subscriber->container = new ServiceLocator(array('bar' => function () {}));
+    $subscriber->container = new ServiceLocator(['bar' => function () {}]);
 
     try {
       $subscriber->container = $subscriber->container->withContext('caller', $container);
@@ -42,15 +41,28 @@ class ServiceLocatorTest extends UnitTestCase {
   }
 
 }
-
+/**
+ * The test class.
+ */
 class SomeServiceSubscriber implements ServiceSubscriberinterface {
 
+  /**
+   * The conatiner/.
+   *
+   * @var \Symfony\Component\DependencyInjection\Container
+   */
   public $container;
 
+  /**
+   * Get foo.
+   */
   public function getFoo() {
     return $this->container->get('foo');
   }
 
+  /**
+   * Get subscribed services.
+   */
   public static function getSubscribedServices() {
     return ['bar' => 'stdClass'];
   }

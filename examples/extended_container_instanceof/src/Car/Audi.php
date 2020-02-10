@@ -1,8 +1,6 @@
 <?php
 
-
 namespace Drupal\extended_container_instanceof\Car;
-
 
 use Drupal\extended_container_instanceof\CarInterface;
 
@@ -13,6 +11,9 @@ use Drupal\extended_container_instanceof\CarInterface;
  */
 class Audi implements CarInterface {
 
+  /**
+   * Brand name.
+   */
   public function __toString() {
     return 'Audi';
   }

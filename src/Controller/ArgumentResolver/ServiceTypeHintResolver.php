@@ -1,8 +1,6 @@
 <?php
 
-
 namespace Drupal\extended_container\Controller\ArgumentResolver;
-
 
 use Drupal\Core\DependencyInjection\ClassResolverInterface;
 use Symfony\Component\DependencyInjection\ContainerInterface;
@@ -19,16 +17,22 @@ use Drupal\Core\Cache\CacheBackendInterface;
 final class ServiceTypeHintResolver implements ArgumentValueResolverInterface {
 
   /**
+   * The class resolver.
+   *
    * @var \Drupal\Core\DependencyInjection\ClassResolverInterface
    */
   private $classResolver;
 
   /**
+   * The container.
+   *
    * @var \Symfony\Component\DependencyInjection\ContainerInterface
    */
   private $container;
 
   /**
+   * The cache.
+   *
    * @var \Drupal\Core\Cache\CacheBackendInterface
    */
   private $cache;
@@ -37,8 +41,11 @@ final class ServiceTypeHintResolver implements ArgumentValueResolverInterface {
    * ServiceTypeHintResolver constructor.
    *
    * @param \Symfony\Component\DependencyInjection\ContainerInterface $container
+   *   The container.
    * @param \Drupal\Core\DependencyInjection\ClassResolverInterface $classResolver
+   *   The class resolver.
    * @param \Drupal\Core\Cache\CacheBackendInterface $cache
+   *   The cache.
    */
   public function __construct(
     ContainerInterface $container,
@@ -73,8 +80,11 @@ final class ServiceTypeHintResolver implements ArgumentValueResolverInterface {
    * Get service and cache it.
    *
    * @param \Symfony\Component\HttpKernel\ControllerMetadata\ArgumentMetadata $argument
+   *   The argument.
    *
    * @return object
+   *   The object.
+   *
    * @throws \ReflectionException
    */
   private function getService(ArgumentMetadata $argument) {

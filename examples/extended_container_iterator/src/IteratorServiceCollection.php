@@ -1,32 +1,36 @@
 <?php
 
-
 namespace Drupal\extended_container_iterator;
 
-use Exception;
-use Traversable;
-
 /**
- * Class IteratorServiceCollection
+ * Class IteratorServiceCollection.
  *
  * @package Drupal\extended_container_iterator
  */
 class IteratorServiceCollection implements \IteratorAggregate {
 
   /**
+   * A list of services.
+   *
    * @var array
    */
   private $services;
 
+  /**
+   * The constructor.
+   *
+   * @param array $services
+   *   The services.
+   */
   public function __construct(array $services) {
     $this->services = $services;
   }
 
   /**
-   * @inheritDoc
+   * {@inheritdoc}
    */
   public function getIterator() {
-   return new \ArrayIterator($this->services);
+    return new \ArrayIterator($this->services);
   }
 
 }

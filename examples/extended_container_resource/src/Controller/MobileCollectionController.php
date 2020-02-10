@@ -1,8 +1,6 @@
 <?php
 
-
 namespace Drupal\extended_container_resource\Controller;
-
 
 use Drupal\Core\Controller\ControllerBase;
 use Drupal\extended_container_resource\MobileCollection;
@@ -16,6 +14,8 @@ use Symfony\Component\DependencyInjection\ContainerInterface;
 class MobileCollectionController extends ControllerBase {
 
   /**
+   * The collection.
+   *
    * @var \Drupal\extended_container_resource\MobileCollection
    */
   private $mobileCollection;
@@ -31,7 +31,7 @@ class MobileCollectionController extends ControllerBase {
   }
 
   /**
-   * @inheritDoc
+   * {@inheritdoc}
    */
   public static function create(ContainerInterface $container) {
     return new static(

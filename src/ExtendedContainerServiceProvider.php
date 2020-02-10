@@ -4,27 +4,28 @@ declare(strict_types=1);
 
 namespace Drupal\extended_container;
 
-
 use Drupal\Core\DependencyInjection\ContainerBuilder;
 use Drupal\Core\DependencyInjection\ServiceProviderBase;
 use Drupal\extended_container\DependencyInjection\Compiler\RegisterServiceSubscribersPass;
 use Symfony\Component\HttpKernel\DependencyInjection\ControllerArgumentValueResolverPass;
 
-
 /**
- * Class ExtendedContainerServiceProvider
+ * Class extended container service provider.
  *
  * @package Drupal\extended_container\
  */
 class ExtendedContainerServiceProvider extends ServiceProviderBase {
 
+  /**
+   * {@inheritdoc}
+   */
   public function register(ContainerBuilder $container) {
     parent::register($container);
 
     $container->addCompilerPass(new RegisterServiceSubscribersPass());
 
     // Add the ability to add argument resolvers using the original Symfony
-    // argument resolver tag: 'controller.argument_value_resolver'
+    // argument resolver tag: 'controller.argument_value_resolver'.
     $container->addCompilerPass(new ControllerArgumentValueResolverPass('http_kernel.controller.argument_resolver'));
 
   }
@@ -40,6 +41,7 @@ class ExtendedContainerServiceProvider extends ServiceProviderBase {
    * Tag core argument resolvers.
    *
    * @param \Drupal\Core\DependencyInjection\ContainerBuilder $container
+   *   The container.
    */
   private function tagCoreArgumentResorvers(ContainerBuilder $container) {
     $argument_resolver_services = [

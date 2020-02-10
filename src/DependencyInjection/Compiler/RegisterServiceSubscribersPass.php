@@ -1,8 +1,6 @@
 <?php
 
-
 namespace Drupal\extended_container\DependencyInjection\Compiler;
-
 
 use Drupal\extended_container\DependencyInjection\ServiceLocator;
 use Symfony\Component\DependencyInjection\Argument\ServiceClosureArgument;
@@ -19,7 +17,7 @@ use Symfony\Component\DependencyInjection\TypedReference;
  * This class adds the service locator functionality.
  *
  * This class is 90% a duplicate of
- *  \Symfony\Component\DependencyInjection\Compiler\RegisterServiceSubscribersPass
+ *  \Symfony\Component\DependencyInjection\Compiler\RegisterServiceSubscribersPass.
  *
  * @package Drupal\extended_container\DependencyInjection\Compiler
  */
@@ -78,7 +76,9 @@ class RegisterServiceSubscribersPass extends AbstractRecursivePass {
       throw new InvalidArgumentException(sprintf('Service %s not exist in the map returned by "%s::getSubscribedServices()" for service "%s".', $message, $class, $this->currentId));
     }
 
-    $value->addTag('container.service_subscriber.locator', ['id' => (string) $this->register($this->container, $subscriberMap, $this->currentId)]);
+    $value->addTag('container.service_subscriber.locator', [
+      'id' => (string) $this->register($this->container, $subscriberMap, $this->currentId),
+    ]);
 
     return parent::processValue($value);
   }
@@ -86,12 +86,17 @@ class RegisterServiceSubscribersPass extends AbstractRecursivePass {
   /**
    * Register a service locator.
    *
-   * @param Reference[] $refMap
+   * @param \Symfony\Component\DependencyInjection\ContainerBuilder $container
+   *   The container.
+   * @param \Symfony\Component\DependencyInjection\Reference[] $refMap
+   *   The reference list.
    * @param string|null $callerId
+   *   The caller ID.
    *
-   * @return Reference
+   * @return \Symfony\Component\DependencyInjection\Reference
+   *   The reference.
    */
-  protected function register(ContainerBuilder $container, array $refMap, $callerId = null) {
+  protected function register(ContainerBuilder $container, array $refMap, $callerId = NULL) {
     foreach ($refMap as $id => $ref) {
       if (!$ref instanceof Reference) {
         throw new InvalidArgumentException(sprintf('Invalid service locator definition: only services can be referenced, "%s" found for key "%s". Inject parameter values using constructors instead.', \is_object($ref) ? \get_class($ref) : \gettype($ref), $id));
@@ -105,21 +110,21 @@ class RegisterServiceSubscribersPass extends AbstractRecursivePass {
       ->setPublic(FALSE)
       ->addTag('container.service_locator');
 
-    if (null !== $callerId && $container->hasDefinition($callerId)) {
+    if (NULL !== $callerId && $container->hasDefinition($callerId)) {
       $locator->setBindings($container->getDefinition($callerId)->getBindings());
     }
 
-    if (!$container->hasDefinition($id = 'service_locator.'.ContainerBuilder::hash($locator))) {
+    if (!$container->hasDefinition($id = 'service_locator.' . ContainerBuilder::hash($locator))) {
       $container->setDefinition($id, $locator);
     }
 
-    if (null !== $callerId) {
+    if (NULL !== $callerId) {
       $locatorId = $id;
       // Locators are shared when they hold the exact same list of factories;
       // to have them specialized per consumer service, we use a cloning factory
       // to derivate customized instances from the prototype one.
-      $container->register($id .= '.'.$callerId, ServiceLocator::class)
-        ->setPublic(false)
+      $container->register($id .= '.' . $callerId, ServiceLocator::class)
+        ->setPublic(FALSE)
         ->setFactory([new Reference($locatorId), 'withContext'])
         ->addArgument($callerId)
         ->addArgument(new Reference('service_container'));

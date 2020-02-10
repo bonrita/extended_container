@@ -1,6 +1,5 @@
 <?php
 
-
 namespace Drupal\extended_container_autoconfigure;
 
 /**
@@ -17,7 +16,6 @@ class TelevisionCollection {
    */
   private $televisionModels = [];
 
-
   /**
    * Add a television model.
    *
@@ -32,6 +30,7 @@ class TelevisionCollection {
    * Get television models.
    *
    * @return array
+   *   The television collection.
    */
   public function getTelevisionModels(): array {
     return $this->televisionModels;

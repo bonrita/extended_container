@@ -1,8 +1,6 @@
 <?php
 
-
 namespace Drupal\extended_container_autoconfigure\Television;
-
 
 use Drupal\extended_container_autoconfigure\TelevisionInterface;
 
@@ -14,7 +12,10 @@ use Drupal\extended_container_autoconfigure\TelevisionInterface;
 class Philips implements TelevisionInterface {
 
   /**
+   * The brand name.
+   *
    * @return string
+   *   The brand name.
    */
   public function __toString() {
     return 'Philips';
