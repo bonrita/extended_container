@@ -5,14 +5,16 @@ Enhance or upgrade the Drupal 8 Container with new functionality
 
 ### Service Subscribers
 Added functionality for service subscribers.
-For more information about service subscribers [read](https://symfony.com/doc/3.4/service_container/service_subscribers_locators.html) 
+For more information about service subscribers
+[read](https://symfony.com/doc/3.4/service_container/service_subscribers_locators.html)
 
 - Usage
   - It lazy loads services.
 
 - How
-  - Tag the service with the tag: **'container.drupal_service_subscriber'** instead of that one that is mentioned in the symfony docs.
-  
+  - Tag the service with the tag: **'container.drupal_service_subscriber'** instead of that one that is
+   mentioned in the symfony docs.
+
 ***Example:***
 
 Suppose you have a controller class: SubscribedServicesController that needs many dependencies.
@@ -41,12 +43,14 @@ Implement the *Symfony\Component\DependencyInjection\ServiceSubscriberInterface*
 ```
 
 **Note:**
-[Optional Services](https://symfony.com/doc/current/service_container/service_subscribers_locators.html#optional-services) are not supported.
+[Optional Services](https://symfony.com/doc/current/service_container/service_subscribers_locators.html#optional-services)
+are not supported.
 
 
 
 Add the small container that will lazy load the services to the class constructor as below.
-Note: Do not add the argument to your service definition as it will be added for you automatically when the container is building the service.
+Note: Do not add the argument to your service definition as it will be added for you automatically when the container
+is building the service.
 ```
 use Psr\Container\ContainerInterface;
 
@@ -87,7 +91,8 @@ services:
 
 ### Autowiring
 Improved greatly on the autowiring feature. Below is what was improved.
-* Enable autowiring for all services of a module by default i.e if enabled for that particular module. [Automatic Service Loading in services.yaml](https://symfony.com/doc/current/service_container.html#creating-configuring-services-in-the-container)
+* Enable autowiring for all services of a module by default i.e if enabled for that particular module.
+ [Automatic Service Loading in services.yaml](https://symfony.com/doc/current/service_container.html#creating-configuring-services-in-the-container)
 * Enable autowiring of interfaces. [More info](https://symfony.com/doc/3.4/service_container/autowiring.html)
 * Add the ability to autowire dependencies on controller methods.
 
@@ -103,9 +108,11 @@ services:
   _defaults:
     autowire: true
 ```
-From this moment on you do not have to define arguments in your service definition as they will be automatically added for you.
+From this moment on you do not have to define arguments in your service definition as they will be automatically
+added for you.
 
-The example below should work without explicitly configuring the service arguments i.e if the default (_default) autowiring (as shown above) was enabled .
+The example below should work without explicitly configuring the service arguments i.e if the default (_default)
+autowiring (as shown above) was enabled .
 
 Service definition:
 ```
@@ -141,7 +148,8 @@ services:
       Drupal\Core\Theme\ThemeManagerInterface: '@theme.manager'
       Drupal\Core\Entity\EntityTypeManagerInterface: '@entity_type.manager'
 ```
-The above will work for all classes (global in this module) that type hint the ***ThemeManagerInterface*** in this module.
+The above will work for all classes (global in this module) that type hint the ***ThemeManagerInterface*** in this
+module.
 
 It will also work for all controller methods that type hint the above interfaces within this module.
 
@@ -155,7 +163,8 @@ extended_container_service_locator.subscribed_service:
       $themeManager: '@theme.manager'
       $themeManager: '@entity_type.manager'
 ```
-The above will only work for the class defined in this service definition. The arguments will not work on the controller methods. The above arguments are only meant for the constructor method of the class in question.
+The above will only work for the class defined in this service definition. The arguments will not work on the
+controller methods. The above arguments are only meant for the constructor method of the class in question.
 
 ***Third solution:***
 
@@ -165,9 +174,11 @@ Directly bind the interface to a service.
 Drupal\Core\Theme\ThemeManagerInterface: '@theme.manager'
 Drupal\Core\Entity\EntityTypeManagerInterface: '@entity_type.manager'
 ```
-The above will work for all classes (globally) that type hint the ***ThemeManagerInterface*** in the whole application i.e if they enabled autowiring on them.
+The above will work for all classes (globally) that type hint the ***ThemeManagerInterface*** in the whole application
+i.e if they enabled autowiring on them.
 
-It will also work for all controller methods in the entire application that type hint the above interface with or without enabling autowiring on those controller classes.
+It will also work for all controller methods in the entire application that type hint the above interface with or
+without enabling autowiring on those controller classes.
 
 ### Local service binding
 Read more about it [here](https://symfony.com/blog/new-in-symfony-3-4-local-service-binding)
@@ -190,21 +201,23 @@ Imagine a folder structure as shown below.
  - MyService1.php
  - MyService2.php
  - ExcludeService.php
- 
+
  To automatically register all the above classes as services, in your my_module.services.yml add the lines below.
  ```
  services:
   _defaults:
     autowire: true
-    
+
   Drupal\my_module\:
     resource: 'src/*'
-    exclude: 'src/{Controller,ExcludeService.php}'  
+    exclude: 'src/{Controller,ExcludeService.php}'
  ```
 
 Note:
 
-How the classes you do not want to automatically add as services are excluded i.e the whole **controller** folder is excluded and also the class in the file **ExcludeService.php** will be excluded from automatically beeing registered as a service.
+How the classes you do not want to automatically add as services are excluded i.e the whole **controller** folder is
+excluded and also the class in the file **ExcludeService.php** will be excluded from automatically beeing registered
+as a service.
 
 Accessing the above generated services would be like:
 
@@ -212,7 +225,7 @@ Accessing the above generated services would be like:
 \Drupal::service('Drupal\my_module\MyService');
 ```
 
-Accessing the services in other locations of your application, in the services.yml file do 
+Accessing the services in other locations of your application, in the services.yml file do
 ```
 services:
   other_module.other_service:
@@ -220,21 +233,24 @@ services:
     arguments: ['@Drupal\my_module\MyService1']
 ```
 
-Note: 
+Note:
 
 - how you prefix the class name with the '@' symbol.
 - The fully qualified class name becomes the service ID.
 
 ### Simpler injection of tagged services
-Added the ability to automatically collect all tagged services and provide them to a manager without creating a compiler pass. 
+Added the ability to automatically collect all tagged services and provide them to a manager without creating
+a compiler pass.
 [Read more](https://symfony.com/blog/new-in-symfony-3-4-simpler-injection-of-tagged-services) about it.
 
 
 ***Example:***
 
-Suppose you do have 2 services that are tagged as 'module_name.tagged_service' and you do want to be collected in one single place e.g in the manager 'module_name.manager'.
+Suppose you do have 2 services that are tagged as 'module_name.tagged_service' and you do want to be collected
+in one single place e.g in the manager 'module_name.manager'.
 
-Simply add a manager service and use a type of argument called ***tagged*** pass in the the tag 'module_name.tagged_servic' whose classes or services you do want collected into the manager.
+Simply add a manager service and use a type of argument called ***tagged*** pass in
+the tag 'module_name.tagged_servic' whose classes or services you do want collected into the manager.
 See example below.
 
 In the MODULE_NAME.services.yml
@@ -244,19 +260,20 @@ services:
     class: Drupal\module_name\TaggedService1
     tags:
       - { name: module_name.tagged_service }
-      
+
   module_name.tagged_2:
     class: Drupal\module_name\TaggedService2
     tags:
       - { name: module_name.tagged_service }
-   
+
   module_name.manager:
     class: Drupal\module_name\TagServiceManager
     arguments:
       - !tagged module_name.tagged_service
 ```
 
-The manager class whose contructor argument will be automatically filled with  a collection of all services that are tagged with the 'module_name.tagged_service' tag
+The manager class whose contructor argument will be automatically filled with  a collection of all services
+that are tagged with the 'module_name.tagged_service' tag
 
 ```
 namespace Drupal\module_name;
@@ -279,7 +296,8 @@ class TagServiceManager implements \IteratorAggregate {
 ```
 
 ### Iterator type of argument.
-Added the ability to add an iterator argument so that you can pass in a list of services in one single constructor argument of the service in question.
+Added the ability to add an iterator argument so that you can pass in a list of services in one single constructor
+argument of the service in question.
 
 ***Example:***
 
@@ -293,7 +311,7 @@ services:
       - !iterator ['@theme.manager', '@entity_type.manager']
 ```
  The class.
- 
+
  ```
 namespace Drupal\module_name;
 
@@ -310,15 +328,17 @@ class IteratorServiceCollection {
 
 
 ## Patch core
-For this module to work certain core files are patched automatically if you are using composer to download the module. 
+For this module to work certain core files are patched automatically if you are using composer to download the module.
 Look into the composer.json file for all of the links to the patches.
 
 ## FAQ
-- **QN:** When l add a a global binding l get the error: 
+- **QN:** When l add a a global binding l get the error:
   ```
    Unused binding "Drupal\my_module\SomeCustomInterface" in service "Drupal\my_module\MyModuleServiceProvider".
   ```
-  **Solution:** Remove the binding you defined. Symfony only allows to bind interfaces that are used as type hints somewhere in your custom module classes. That error is only thrown if the interface is not type hinted anywhere in your module classes.
+  **Solution:** Remove the binding you defined. Symfony only allows to bind interfaces that are used as type hints
+   somewhere in your custom module classes. That error is only thrown if the interface is not type hinted anywhere
+   in your module classes.
 - **QN:**
 
 
